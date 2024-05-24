@@ -38,5 +38,5 @@ git add "${output}"
 git commit -m "Github actions report # ${GITHUB_SHA}"
 git push --quiet "https://github.com/${GITHUB_REPOSITORY}.git" "${deployment}" > /dev/null
 
-echo "Memote diff was generated at https://${ github.repository_owner }.github.io/${ github.event.repository.name }/diff${ github.sha }"
+echo "Memote report was generated at https://pnnl-predictive-phenomics/${GITHUB_REPOSITORY}"
 
