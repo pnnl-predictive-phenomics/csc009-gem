@@ -1,6 +1,13 @@
 version: "0.1"
 medium:
   path: "media/"
+  definitions:
+    whole_medium_no_carbon:
+      file_name: "csc009_C-less_media.csv"
+      label: "All medium metabolites except the ones with Carbon"
+    min_media_no_carbon:
+      file_name: "min_medium_csc009C-less_media.csv"
+      label "Minimal media with no carbon"
 essentiality:
   path: "essentiality/"
 growth:
