@@ -7,6 +7,10 @@ echo "Parse memote.ini for values."
 deployment=$(awk -F '=' '{if (! ($0 ~ /^;/) && $0 ~ /deployment/) print $2}' memote.ini | tr -d ' ')
 location=$(awk -F '=' '{if (! ($0 ~ /^;/) && $0 ~ /location/) print $2}' memote.ini | tr -d ' ')
 
+echo "Deployment '${deployment}'"
+echo "Location '${location}'"
+echo "repository '${GITHUB_REPOSITORY}'"
+
 git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 git config --global user.name "${GITHUB_ACTOR}"
 
@@ -27,16 +31,25 @@ else
 		echo "Start deploy to ${deployment}..."
 fi
 
+# Generate a snapshot report on the deployment branch.
+snapshot_output="snapshot_report.html"
+git checkout "${deployment}"
+echo "Generating snapshot report '${snapshot_output}'"
+memote report snapshot --filename="${snapshot_output}"
+
 # Generate the history report on the deployment branch.
 output="history_report.html"
 git checkout "${deployment}"
-echo "Generating updated history report '${output}'."
-memote report history --filename="${output}"
+echo "Generating updated history report '${history_output}'."
+memote report history --filename="${history_output}"
 
-# Add, commit and push the files.
-git add "${output}"
-git commit -m "Github actions report # ${GITHUB_SHA}"
-git push --quiet "https://github.com/${GITHUB_REPOSITORY}.git" "${deployment}" > /dev/null
-
-echo "Memote report was generated at https://pnnl-predictive-phenomics/${GITHUB_REPOSITORY}"
-
+# Check if the report file exists
+if [ -f "${output}" ] then
+	git add "${history_output}"
+	git commit -m "Github actions report # ${GITHUB_SHA}"
+	git push --quiet "https://github.com/${GITHUB_REPOSITORY}.git" "${deployment}" > /dev/null
+	echo "Memote report was generated at https://pnnl-predictive-phenomics/${GITHUB_REPOSITORY}"
+else
+	echo "Error: Report file not found!"
+	exit 1
+fi
