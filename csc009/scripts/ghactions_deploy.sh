@@ -38,13 +38,13 @@ echo "Generating snapshot report '${snapshot_output}'"
 memote report snapshot --filename="${snapshot_output}"
 
 # Generate the history report on the deployment branch.
-output="history_report.html"
+history_output="history_report.html"
 git checkout "${deployment}"
 echo "Generating updated history report '${history_output}'."
 memote report history --filename="${history_output}"
 
 # Check if the report file exists
-if [ -f "${output}" ] then
+if [ -f "${history_output}" ] then
 	git add "${snapshot_output}"
 	git add "${history_output}"
 	git commit -m "Github actions report # ${GITHUB_SHA}"
