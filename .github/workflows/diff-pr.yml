@@ -8,10 +8,7 @@ on:
 jobs:
   diff:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      issues: write
-      pull-requests: write     
+
     steps:
     - uses: actions/checkout@v2
       with:
