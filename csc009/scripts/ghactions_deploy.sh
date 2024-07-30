@@ -14,7 +14,7 @@ echo "repository '${GITHUB_REPOSITORY}'"
 git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 git config --global user.name "${GITHUB_ACTOR}"
 
-if [[ "${GITHUB_EVENT_NAME}" == "pull_request" || "${GITHUB_REPOSITORY}" != "pnnl-predictive-phenomics/csc009" ]]; then
+if [[ "${GITHUB_EVENT_NAME}" == "pull_request" || "${GITHUB_REPOSITORY}" != "pnnl-predictive-phenomics/csc009-gem" ]]; then
     echo "Untracked build."
     memote run --ignore-git
 		echo "Skip deploy."
@@ -45,6 +45,7 @@ memote report history --filename="${history_output}"
 
 # Check if the report file exists
 if [ -f "${output}" ] then
+	git add "${snapshot_output}"
 	git add "${history_output}"
 	git commit -m "Github actions report # ${GITHUB_SHA}"
 	git push --quiet "https://github.com/${GITHUB_REPOSITORY}.git" "${deployment}" > /dev/null
