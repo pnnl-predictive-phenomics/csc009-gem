@@ -15,7 +15,7 @@ This repository contains the continuous validation environment for an organism-s
 - **Continuous Integration**: Integrate with CI platforms like GitHub Actions or Travis CI to run Memote tests on every commit, ensuring model quality over time.
 - **Version Control**: Track changes to the GEM using Git, allowing for revertible updates and collaborative development.
 - **Memote Report**: Generate and store Memote history reports to visualize the model's quality over time and identify areas for improvement.
-- **Documentation**: Detailed instructions for setting up the environment, running tests, and interpreting Memote reports.
+- **Documentation**: Detailed instructions for setting up the environment, running tests, and interpreting Memote reports
 
 ## Quick Start
 
