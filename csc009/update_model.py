@@ -26,7 +26,7 @@ _path = pathlib.Path(os.getcwd())
 #_f_path = _path.joinpath('plate_to_bigg.csv').__str__()
 _f_path = _path.joinpath('plate_to_bigg.csv').__str__()
 
-starting_model = read_sbml_model("csc031.xml")
+starting_model = read_sbml_model("csc009.xml")
 
 def write_model(model):
     cobra.io.write_sbml_model(model, output_model_path)
