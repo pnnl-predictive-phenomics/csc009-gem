@@ -3,6 +3,8 @@
 
 # In[ ]:
 
+#run this script after updating biolog/media updates 
+#and before running MEMOTE so it can update the model with most current biolog information
 
 from memote.suite.cli.reports import diff
 import cobra
