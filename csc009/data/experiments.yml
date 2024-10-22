@@ -1,6 +1,6 @@
 version: "0.1"
 medium:
-  path: "media/"
+  path: "csc009/data/media/"
   definitions:
     whole_medium_no_carbon:
       filename: "csc009C-less_media.csv"
@@ -9,7 +9,7 @@ medium:
       filename: "min_medium_csc009C-less_media.csv"
       label: "Minimal media with no carbon"
 growth:
-  path: "growth/"
+  path: "csc009/data/growth/"
   experiments:
     biolog_carbon:
       medium: whole_medium_no_carbon
