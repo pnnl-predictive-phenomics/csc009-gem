@@ -1,19 +1,19 @@
 #must specify running this yaml file in the command terminal when running memote
 version: "0.1"
 medium:
-  path: "csc009/data/media/"
+  path: "rhodobacter_memote/data/media/"
   definitions:
     whole_medium_no_carbon:
-      filename: "csc009C-less_media.csv"
+      filename: ""
       label: "All medium metabolites except the ones with Carbon"
-    min_media_no_carbon:
-      filename: "min_medium_csc009C-less_media.csv"
-      label: "Minimal media with no carbon"
+    m9_min_media:
+      filename: ""
+      label: "M9 Minimal Media"
 growth:
-  path: "csc009/data/growth/"
+  path: "rhodobacter_memote/data/media/"
   experiments:
     biolog_carbon:
       medium: whole_medium_no_carbon
-      filename: "biolog_carbon_curtobacterium1.csv"
+      filename: "biolog_results.csv"
       label: "no carbon data"
 minimal_growth_rate: 0.05
