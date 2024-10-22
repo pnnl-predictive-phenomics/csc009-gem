@@ -12,7 +12,7 @@ growth:
   path: "growth/"
   experiments:
     biolog_carbon:
-      medium: min_media_no_carbon
+      medium: whole_medium_no_carbon
       filename: "biolog_carbon_curtobacterium1.csv"
-      label: "no_carbon data"
+      label: "no carbon data"
 minimal_growth_rate: 0.05
