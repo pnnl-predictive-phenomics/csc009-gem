@@ -60,7 +60,7 @@ EX_diact_e,no,0
 EX_R_actn_e,no,0
 EX_asp__L_e, no, 0
 EX_gln__L_e, no, 0
-EX_adn__e, no, 0
+EX_adn_e, no, 0
 EX_ser__L_e, yes, 10
 EX_thr__L_e, no, 0
 EX_tym_e, no, 0
