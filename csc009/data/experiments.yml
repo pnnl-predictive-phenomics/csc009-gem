@@ -1,3 +1,4 @@
+#must specify running this yaml file in the command terminal when running memote
 version: "0.1"
 medium:
   path: "csc009/data/media/"
