@@ -41,6 +41,11 @@ This repository contains the continuous validation environment for an organism-s
 5. **Interpret Results**
    - Review the output of Memote tests and reports for insights into model quality and validation status.
 
+6. **Running snapshot reports on experimental data**
+      ```
+      memote report snapshot --filename "file.html" --custom-config path\to\experiment.yml  path\to\model.xml
+      ```
+
 ## Contributing
 
 We welcome contributions to improve the model's quality and extend its capabilities. Please read `CONTRIBUTING.md` for guidelines on how to contribute.
