@@ -1,8 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
+#run this script after updating biolog/media updates
+#and before running MEMOTE so it can update the model 
+# with most current biolog information
+#output file will overwite old generated model reports
 
 from memote.suite.cli.reports import diff
 import cobra
@@ -16,7 +15,7 @@ import pandas as pd
 import pathlib
 import sys
 import os
-sys.path.insert(0, "/Users/rodr579/Repos/Concerto/concerto")
+sys.path.insert(0, "C:/Users/lint730/concerto")
 from concerto.utils import load_universal_model
 ##########
 _log = logging.getLogger()
@@ -24,9 +23,11 @@ _log = logging.getLogger()
 #_path = pathlib.Path(__file__).parent
 _path = pathlib.Path(os.getcwd())
 #_f_path = _path.joinpath('plate_to_bigg.csv').__str__()
-_f_path = _path.joinpath('plate_to_bigg.csv').__str__()
+_f_path = _path.joinpath('C:/Users/lint730/concerto/concerto/utils/plate_to_bigg.csv').__str__()
 
-starting_model = read_sbml_model("csc009.xml")
+starting_model = read_sbml_model("model_gapfilled.xml")
+output_model_name = 'model_gapfilled.xml'
+output_model_path = os.path.join(_path, output_model_name)
 
 def write_model(model):
     cobra.io.write_sbml_model(model, output_model_path)
@@ -49,7 +50,7 @@ def update_1(model):
     -------
     cobra.Model
     """
-    new_model = model.copy()
+    new_model = model
     not_found = set()
     added = set()
 
@@ -96,10 +97,3 @@ if __name__ == '__main__':
             '--exclusive', 'test_growth',
         ]
     )'''
-
-
-# In[ ]:
-
-
-
-
