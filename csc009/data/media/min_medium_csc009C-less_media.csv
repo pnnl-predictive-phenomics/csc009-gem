@@ -1,12 +1,12 @@
 exchange,uptake
-EX_fe3_e,10
-EX_h2s_e,10
-EX_k_e,10
-EX_mg2_e,10
-EX_mn2_e,10
-EX_o2_e,10
-EX_so4_e,10
-EX_zn2_e,10
-EX_cl_e, 10
-EX_na1_e, 10
-EX_nh4_e, 10
+EX_fe3_e,1000
+EX_h2s_e,1000
+EX_k_e,1000
+EX_mg2_e,1000
+EX_mn2_e,1000
+EX_o2_e,1000
+EX_so4_e,1000
+EX_zn2_e,1000
+EX_cl_e, 1000
+EX_na1_e, 1000
+EX_nh4_e, 1000
