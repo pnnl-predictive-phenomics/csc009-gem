@@ -24,7 +24,7 @@ _log = logging.getLogger()
 #_path = pathlib.Path(__file__).parent
 _path = pathlib.Path(os.getcwd())
 #_f_path = _path.joinpath('plate_to_bigg.csv').__str__()
-_f_path = _path.joinpath('plate_to_bigg.csv').__str__()
+_f_path = _path.joinpath('concerto\utils\plate_to_bigg.csv').__str__()
 
 starting_model = read_sbml_model("csc009.xml")
 
