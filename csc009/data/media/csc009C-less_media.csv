@@ -21,3 +21,7 @@ EX_tet_e,1000
 EX_tnt_e,1000
 EX_tsul_e,1000
 EX_zn2_e,1000
+EX_cl_e, 10
+EX_na1_e, 10
+EX_nh4_e, 10
+EX_k_e, 10
