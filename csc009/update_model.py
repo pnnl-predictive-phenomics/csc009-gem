@@ -17,13 +17,13 @@ import sys
 import os
 sys.path.insert(0, "C:/Users/lint730/concerto") #this will have to be a local path
 from concerto.utils import load_universal_model
-##########
+from concerto.utils.biolog_help import add_biolog_exchanges
+
 _log = logging.getLogger()
 
-#_path = pathlib.Path(__file__).parent
-_path = pathlib.Path(os.getcwd())
-#_f_path = _path.joinpath('plate_to_bigg.csv').__str__()
-_f_path = _path.joinpath('C:/Users/lint730/concerto/concerto/utils/plate_to_bigg.csv').__str__()
+#adding additional metabolites
+_path = pathlib.Path(__file__).parent
+_f_path = _path.joinpath('csc009-gem\csc009\data\growth\custom_plate.csv').__str__()
 
 starting_model = read_sbml_model("model.xml")
 output_model_name = 'model_gapfilled.xml'
@@ -32,12 +32,17 @@ output_model_path = os.path.join(_path, output_model_name)
 def write_model(model):
     cobra.io.write_sbml_model(model, output_model_path)
 
-
+#imports adding biolog exchanges from concerto utils file
 def update_1(model):
-    
-    """ Add missing BioLog exchanges to cobra model
+    # add missing biolog reactions to model
+    log.info("Adding BL to prefix")
+    model = add_biolog_exchanges(model)
+    return model
 
-    Adds missing BioLog exchanges from the plate to a cobra model. It grabs the
+def add_custom_plate_exchanges(model):
+  """ Add missing custom_plate exchanges to cobra model
+
+    Adds missing custom_plate exchanges from the plate to a cobra model. It grabs the
     reactions for the universal model, which should pull all annotations as
     well as metabolite information.
 
@@ -56,9 +61,9 @@ def update_1(model):
 
     # load in material needed to add biolog exchanges
     universal_model = load_universal_model()
-    biolog_map = pd.read_csv(_f_path, index_col=False)
-
-    for rxn in biolog_map.exchange:
+    custom_map = pd.read_csv(_f_path, index_col=False)
+  
+    for rxn in custom_map.exchange:
         if rxn not in new_model.reactions:
             if rxn in universal_model.reactions:
                 added.add(rxn)
@@ -73,15 +78,16 @@ def update_1(model):
     for i in not_found:
         _log.warning(f'{i} not found in universal model')
         print(f'{i} not found in universal model')
-    _log.info(f"Added {len(added)} biolog exchange reactions")
-    print(f"Added {len(added)} biolog exchange reactions")
-
+    _log.info(f"Added {len(added)} custom exchange reactions")
+    print(f"Added {len(added)} custom exchange reactions")
+  
+    model = add_custom_plate_exchanges(model)
     return new_model
-
 
 def update_model():
     # Fix compartments
     model = update_1(starting_model)
+    model = add_custom_plate_exchanges(model)
     write_model(model)
 
 
