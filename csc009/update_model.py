@@ -25,7 +25,7 @@ _path = pathlib.Path(os.getcwd())
 #_f_path = _path.joinpath('plate_to_bigg.csv').__str__()
 _f_path = _path.joinpath('C:/Users/lint730/concerto/concerto/utils/plate_to_bigg.csv').__str__()
 
-starting_model = read_sbml_model("model_gapfilled.xml")
+starting_model = read_sbml_model("model.xml")
 output_model_name = 'model_gapfilled.xml'
 output_model_path = os.path.join(_path, output_model_name)
 
