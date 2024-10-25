@@ -5,12 +5,9 @@
 
 from memote.suite.cli.reports import diff
 import cobra
-import os
 import logging
 from cobra.manipulation.modify import rename_genes
-#from concerto.utils.biolog_help import add_biolog_exchanges
 from cobra.io import read_sbml_model
-import logging
 import pandas as pd
 import pathlib
 import sys
@@ -23,7 +20,7 @@ _log = logging.getLogger()
 
 #adding additional metabolites
 _path = pathlib.Path(__file__).parent
-_f_path = _path.joinpath('csc009-gem\csc009\data\growth\custom_plate.csv').__str__()
+_f_path = _path.joinpath('C:/Users/lint730/GEM_repos/csc009-gem/csc009/data/growth/custom_plate.csv').__str__()
 
 starting_model = read_sbml_model("model.xml")
 output_model_name = 'model_gapfilled.xml'
@@ -35,12 +32,12 @@ def write_model(model):
 #imports adding biolog exchanges from concerto utils file
 def update_1(model):
     # add missing biolog reactions to model
-    log.info("Adding BL to prefix")
+    _log.info("Adding BL to prefix")
     model = add_biolog_exchanges(model)
     return model
 
 def add_custom_plate_exchanges(model):
-  """ Add missing custom_plate exchanges to cobra model
+    """ Add missing custom_plate exchanges to cobra model
 
     Adds missing custom_plate exchanges from the plate to a cobra model. It grabs the
     reactions for the universal model, which should pull all annotations as
